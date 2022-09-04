@@ -1,0 +1,126 @@
+@import url("https://db.onlinewebfonts.com/c/1c45e28f8e86cc89876f003b953cc3e9?family=SF+Pro+Text");
+@import url("http://fonts.cdnfonts.com/css/roboto");
+@import url("https://rsms.me/inter/inter.css");
+body {
+  box-sizing: border-box;
+  background-color: #F5F5F5;
+}
+
+.first {
+  background-color: rgb(33, 33, 43);
+  padding: 22px 120px 0px 120px;
+  display: flex;
+  justify-content: space-between;
+}
+.first-left {
+  width: 42.5%;
+}
+.first-left_title {
+  margin-top: 148px;
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  color: #FFFFFF;
+  margin-bottom: 0;
+  letter-spacing: 1.4px;
+}
+.first-left_desc {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  margin: 24px 0 0 0;
+  letter-spacing: 0.1px;
+}
+.first-left_desc2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin-top: 48px;
+}
+.first-left_input-group {
+  margin-top: 18px;
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+}
+.first-left_input-group_input {
+  background-color: transparent;
+  border: 0;
+  width: 327px;
+  border-bottom: 1.5px solid rgba(190, 190, 182, 0.2);
+}
+.first-left_input-group_input::-moz-placeholder {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #AAADB2;
+}
+.first-left_input-group_input:-ms-input-placeholder {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #AAADB2;
+}
+.first-left_input-group_input::placeholder {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #AAADB2;
+}
+.first-left_input-group_input:focus {
+  outline: 0;
+}
+.first-left_input-group_submit {
+  width: 190px;
+  height: 46px;
+  background: #FF4810;
+  border-radius: 22px;
+  cursor: pointer;
+  color: #FFFFFF;
+  padding: 12px 23px 14px 23px;
+  outline: 0;
+  border: 0;
+}
+.first-left_input-group_submit[type=submit] {
+  font-family: "SF Pro Text";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  letter-spacing: 1.3px;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+}
+.first-right {
+  margin: 125px 0 0 0;
+}
+
+.second {
+  margin: 56px 120px 0px 120px;
+  background-color: #FFFFFF;
+  border-radius: 22px;
+  display: flex;
+}/*# sourceMappingURL=style.css.map */
