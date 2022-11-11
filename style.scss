@@ -18,16 +18,17 @@ body{
 }
 .first{
     background-color: $first_background;
-    height: 100vh;
+    height: auto;
     max-height: 1080px;
     width: 100%;
+    padding-bottom: 0;
     &_logo{
         margin: 22px 0px 22px 0px;
     }
     &-wrapper{
         margin: 0 auto 0 auto;
         max-width: 1200px;
-        height: 100%;
+        height: 592px;
         background: url("img/first-block_img.png");
         background-position: center;
         background-repeat: no-repeat;
@@ -36,6 +37,7 @@ body{
     }
     &-left{
         max-width: 532px;
+
         &_title{
             margin-top: 148px;
             font-family: 'SF Pro Text';
@@ -78,6 +80,14 @@ body{
                 border: 0;
                 width: 62%;
                 border-bottom: 1.5px solid rgba(190, 190, 182, 0.2);
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+                display: flex;
+                align-items: center;
+                color: #FFFFFF;
                 &::placeholder{
                     font-family: 'SF Pro Text';
                     font-style: normal;
@@ -189,6 +199,85 @@ body{
     
 }
 
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid #F77248;
+    border-radius: 22px;
+    z-index: 10;
+    background-color: #F77248;
+    width: 500px;
+    max-width: 80%;
+}
+  
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+  
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+  
+.modal-header .title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+  
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: #F77248;
+    border-radius: 7px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    &:hover{
+        background-color: #ffffff;
+    }
+}
+  
+.modal-body {
+    padding: 10px 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+  
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+  
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
 
 .third{
     max-width: 1200px;
@@ -820,7 +909,7 @@ body{
     max-width: 100%;
     overflow: hidden;
     &_title{
-        margin: 0;
+        margin: 0 50px 0 50px;
         font-family: 'Rubik';
         font-style: normal;
         font-weight: 900;
@@ -833,7 +922,7 @@ body{
         color: #21212B;
     }
     &_desc{
-        margin-top: 17px;
+        margin: 17px 50px 0 50px;
         font-family: 'SF Pro Rounded';
         font-style: normal;
         font-weight: 400;
@@ -842,34 +931,34 @@ body{
         text-align: center;
         color: rgba(51, 51, 51, 0.5);
     }
-    &-ticker{
+    &-ring{
         display: flex;
-        margin: 0;
-        overflow: hidden;
-        animation: ninth_scroll 20s infinite linear;
+        width: 100%;
+        animation: marquee-infinite 6s linear infinite;
+        &:hover{
+            animation-play-state: paused;
+            
+        }
+    }
+    &-ticker{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
         &-item{
             list-style: none;
             white-space: nowrap;
-            margin: 0px;
-            &::after{
-                content: "";
-                width: 1px;
-                height: 100%;
-
-            }
-            &:last-child::after{
-                display: none;
-            }
+            margin-left: 0px;
         }
     }
 }
 
-@keyframes ninth_scroll {
-    from{
-        transform: translateX(100%);
+
+@keyframes marquee-infinite {
+    0% {
+        transform: translateX(0%);
     }
-    to{
-        transform: translateX(-1500px);
+    100% {
+        transform: translateX(-90%);
     }
 }
 
@@ -889,23 +978,38 @@ body{
     }
     &-faq{
         margin-top: 24px;
-        background-color: #f5f5f5f5;
+        background-color: #f8f8f8;
+        overflow: hidden;
         border-radius: 12px;
-        display: flex;
-        flex-direction: column;
+        display: block;
+        padding: 20px, 12px, 20px, 12px;
         align-items: flex-start;
         cursor: pointer;
-        padding: 20px, 12px, 20px, 12px;
-        &.active ,&:active>&-answer{
-            max-height: 198px;
+        img{
+            margin-right: 12px;
+            transition: transform .3s ease-in-out;
+        }
+        &.active{
+            img{
+                transform: rotate(180deg);
+                transition: transform .5s ease-in-out;
+                margin-right: 12px;
+            }
+            .tenth-faq-answer{
+                margin-right: 12px;
+                max-height: 198px;
+                transition: max-height .8s ease-in-out;
+            }
         }
         &-question{
+            display: inline-block;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             width: 100%;
             &_p{
+                margin-left: 12px;
+                margin-top: 20px;
                 font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 600;
@@ -917,8 +1021,8 @@ body{
         &-answer{
             max-height: 0;
             overflow: hidden;
-            transition: max-height 1.4 ease;
-
+            transition: .6s linear;
+            margin-left: 12px;
             &_p{
                 font-family: 'Montserrat';
                 font-style: normal;
@@ -930,9 +1034,153 @@ body{
         }
     }
 }
+.eleventh{
+    width: 100%;
+    height: auto;
+    margin-top: 82px;
+    background: #FFFFFF;
+    box-shadow: 0px -6px 32px rgba(0, 0, 0, 0.15);
+    border-radius: 24px 24px 0px 0px;
+    padding-bottom: 25px;
+    &-wrapper{
+        max-width: 1200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 auto 25px auto;
+        &-column{
+            // &:first-child{
+            //     margin-top: 60px;
+            // }
+            margin-top: 60px;
+            & a{
+                text-decoration: none;
+            }
+            &_title{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                color: rgba(115, 124, 145, 0.7);
+                &:hover{
+                    color: rgba(247, 114, 72, 1);
+                    cursor: pointer;
+                    transition: all .4s ease-in-out;
+                }
+            }
+            &_links{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                color: #737C91;
+                display: flex;
+                align-items: center;
+                &:hover{
+                    color: rgba(247, 114, 72, 1);
+                    cursor: pointer;
+                    transition: all .4s ease-in-out;
+                }
+                & svg{
+                    margin-left: 8px;
+                }
+            }
+        }
+        &_line{
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+    }
+}
 
-
-
-
-
-
+.twelfth{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 40px auto 15px auto;
+    &-icons{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &-left{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            & a{
+                text-decoration: none;
+                display: flex;
+                margin-right: 14px;
+            }
+            &_number{
+                font-family: 'SF Pro Text';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 21px;
+                line-height: 25px;
+                display: flex;
+                align-items: center;
+                color: #201F1F;
+                opacity: 0.8;
+                margin-left: 12px;
+                margin-right: 22px;
+            }
+        }
+        &-right{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            & a{
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-left: 16px;
+            }
+        }
+    }
+    &_line{
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 100%;       
+        margin-top: 15px;
+    }
+    &-copyright{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &-left{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            &_txt{
+                font-family: 'SF Pro Text';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 14px;
+                color: #AAADB2;
+                opacity: 0.8;
+                margin-left: 12px;
+            }
+        }
+        &-right{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'SF Pro Text';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #AAADB2;
+            opacity: 0.8;
+            & p{
+                margin-left: 12px;
+            }
+        }
+    }
+}
